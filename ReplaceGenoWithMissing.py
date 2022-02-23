@@ -66,7 +66,7 @@ if __name__=="__main__":
     parser = argparse.ArgumentParser(description="A small python script to set the geno field missing for \
     each individual sample based on user-defined threshold of depth. Positions with minor allele freq 0 as well as with \
     multi-allelic variants will be excluded by default. Additionally, the script will add the info tag SD listing the samples for \
-    which the genotypes were set to missing at that particular position", epilog="author: Maulik Upadhyay (Upadhyaya.maulik@gmail.com)")
+    which the genotypes were set to missing at that particular position", epilog="author: Maulik Upadhyay (Upadhyay.maulik@gmail.com)")
     parser.add_argument("-v","--vcfF",metavar="File",help="compressed or uncompressed vcf or \
     bcf file",required=True)
     parser.add_argument("-s",'--sampleF',metavar="File",help="sample file with two columns:\
