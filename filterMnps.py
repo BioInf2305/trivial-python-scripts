@@ -3,6 +3,7 @@ import math
 import argparse
 from collections import OrderedDict
 from pysam import VariantFile
+from pysam import tabix_index
 
 def filterSitesAlleleCount(bcfIn, minAlleles, maxAlleles, bcfOut):
     minAlleles=int(minAlleles)
@@ -13,6 +14,8 @@ def filterSitesAlleleCount(bcfIn, minAlleles, maxAlleles, bcfOut):
         if rec.alts!=None:
             if len(rec.alts)>=minAlleles and len(rec.alts)<=maxAlleles and "*" not in rec.alts and len(rec.ref)==1:
                 bcf_out.write(rec)
+    bcf_out.close()
+    tabix_index(bcfOut, preset='vcf')
 
 if __name__=="__main__":
     parser = argparse.ArgumentParser(description="A small python script to filter the sites based on \
